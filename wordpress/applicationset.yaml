@@ -1,0 +1,38 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: wordpress-tenants
+  namespace: argocd
+spec:
+  generators:
+    - git:
+        repoURL: https://github.com/<you>/gitops-kubeoptim.git
+        revision: main
+        directories:
+          - path: apps/wordpress/*            # un dossier = un client
+  template:
+    metadata:
+      name: 'wp-{{path.basename}}'
+      labels:
+        tenant: '{{path.basename}}'
+        app.kubernetes.io/part-of: wordpress
+    spec:
+      project: default
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: 'wp-{{path.basename}}'
+      sources:
+        # Source 1 : chart Bitnami
+        - repoURL: https://charts.bitnami.com/bitnami
+          chart: wordpress
+          targetRevision: 19.2.0
+          helm:
+            valueFiles:
+              - $values/apps/wordpress/{{path.basename}}/values.yaml
+        # Source 2 : ton repo (les values)
+        - repoURL: https://github.com/<you>/gitops-kubeoptim.git
+          targetRevision: main
+          ref: values
+      syncPolicy:
+        automated: { prune: true, selfHeal: true }
+        syncOptions: [ "CreateNamespace=true" ]
