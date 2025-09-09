@@ -6,13 +6,13 @@ metadata:
 spec:
   generators:
     - git:
-        repoURL: https://github.com/<you>/gitops-kubeoptim.git
+        repoURL: https://github.com/<YOU>/<REPO>.git
         revision: main
         directories:
-          - path: apps/wordpress/*            # un dossier = un client
+          - path: Apps/wordpress/*          # <- un dossier = un client
   template:
     metadata:
-      name: 'wp-{{path.basename}}'
+      name: 'wp-{{path.basename}}'          # ex: wp-bremens-test
       labels:
         tenant: '{{path.basename}}'
         app.kubernetes.io/part-of: wordpress
@@ -20,7 +20,7 @@ spec:
       project: default
       destination:
         server: https://kubernetes.default.svc
-        namespace: 'wp-{{path.basename}}'
+        namespace: 'wp-{{path.basename}}'   # ex: wp-bremens-test
       sources:
         # Source 1 : chart Bitnami
         - repoURL: https://charts.bitnami.com/bitnami
@@ -28,11 +28,14 @@ spec:
           targetRevision: 19.2.0
           helm:
             valueFiles:
-              - $values/apps/wordpress/{{path.basename}}/values.yaml
-        # Source 2 : ton repo (les values)
-        - repoURL: https://github.com/<you>/gitops-kubeoptim.git
+              - $values/Apps/wordpress/{{path.basename}}/values.yaml  # <- valeurs du client
+        # Source 2 : ton repo (pour $values)
+        - repoURL: https://github.com/<YOU>/<REPO>.git
           targetRevision: main
           ref: values
       syncPolicy:
-        automated: { prune: true, selfHeal: true }
-        syncOptions: [ "CreateNamespace=true" ]
+        automated:
+          prune: true
+          selfHeal: true
+        syncOptions:
+          - CreateNamespace=true
