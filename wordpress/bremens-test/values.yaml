@@ -34,7 +34,7 @@ ingress:
 persistence:
   enabled: true
   storageClass: longhorn
-  size: 10Gi
+  size: 2Gi
 
 # --- Base MariaDB intégrée (simple pour commencer)
 mariadb:
@@ -48,7 +48,7 @@ mariadb:
     persistence:
       enabled: true
       storageClass: longhorn
-      size: 10Gi
+      size: 2Gi
 
 # Optionnel : quelques paramètres utiles
 allowEmptyPassword: false
