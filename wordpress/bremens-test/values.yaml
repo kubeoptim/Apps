@@ -1,1 +1,62 @@
+# Apps/wordpress/bremens-test/values.yaml
+
+# --- Auth WP (pour le test ; ensuite n8n les génèrera)
+wordpressUsername: admin
+wordpressPassword: "Test-Admin-Password123!"
+
+# --- Service interne (on publie via Ingress Traefik)
+service:
+  type: ClusterIP
+
+# --- Ingress Traefik
+ingress:
+  enabled: true
+  # FQDN du site (crée l'enregistrement DNS vers l'IP Traefik/MetalLB)
+  hostname: "bremens-test.kubeoptim.com"
+
+  # Si tu es sur Traefik v2, tu peux utiliser ingressClassName OU l’annotation ci-dessous.
+  # ingressClassName: traefik
+
+  annotations:
+    kubernetes.io/ingress.class: traefik
+    # Décommente si tu as cert-manager (ClusterIssuer présent)
+    # cert-manager.io/cluster-issuer: "letsencrypt-prod"
+
+  # Active le TLS si tu as cert-manager ou un secret TLS déjà prêt
+  tls: false
+  # Si tls: true et tu veux forcer un secret spécifique :
+  # extraTls:
+  #   - hosts:
+  #       - "bremens-test.kubeoptim.com"
+  #     secretName: "wp-bremens-test-tls"
+
+# --- Stockage (Longhorn)
+persistence:
+  enabled: true
+  storageClass: longhorn
+  size: 10Gi
+
+# --- Base MariaDB intégrée (simple pour commencer)
+mariadb:
+  enabled: true
+  auth:
+    database: "bitnami_wordpress"
+    username: "bn_wordpress"
+    password: "Test-DB-Password123!"
+    rootPassword: "Test-DB-RootPass123!"
+  primary:
+    persistence:
+      enabled: true
+      storageClass: longhorn
+      size: 10Gi
+
+# Optionnel : quelques paramètres utiles
+allowEmptyPassword: false
+# resources:
+#   requests:
+#     cpu: 100m
+#     memory: 256Mi
+#   limits:
+#     cpu: 500m
+#     memory: 512Mi
 
