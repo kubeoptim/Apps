@@ -1,1 +1,21 @@
-
+wordpressUsername: admin
+wordpressPassword: "4gNISNbJabiM7MoJ5vnZqzo7"
+ingress:
+  enabled: true
+  hostname: "giroud.com"
+  tls: true
+  annotations:
+    kubernetes.io/ingress.class: traefik
+persistence:
+  enabled: true
+  storageClass: longhorn
+  size: 10Gi
+mariadb:
+  primary:
+    persistence:
+      storageClass: longhorn
+extraEnvVars:
+  - name: REQUESTER_EMAIL
+    value: "olivier@giroud.com"
+  - name: REQUESTER_NAME
+    value: "Olivier Giroud"
