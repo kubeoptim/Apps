@@ -1,0 +1,15 @@
+wordpressUsername: admin
+wordpressPassword: PBJaWekktqTeYN3b
+ingress:
+  enabled: true
+  hostname: "henry.com"
+  tls: true
+storage:
+  class: longhorn
+  size: 10Gi
+extraEnvVars:
+  - name: REQUESTER_EMAIL
+    value: "thierry@henry.com"
+  - name: REQUESTER_NAME
+    value: "Thierry Henry"
+
