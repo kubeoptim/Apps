@@ -1,5 +1,5 @@
 wordpressUsername: admin
-wordpressPassword: 4xBHsLRnejpf60eZ
+wordpressPassword: tmEAs4fRXjBHggQz
 ingress:
   enabled: true
   hostname: "ronaldo.com"
