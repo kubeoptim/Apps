@@ -1,6 +1,6 @@
 # wordpress/tolisso/values.yaml
 wordpressUsername: admin
-wordpressPassword: "QXi%y9k*@YAvH9Wwr#DecPhg"
+wordpressPassword: "eYiFvr@hhERu?Ga%XU3Ntb4q"
 
 service:
   type: ClusterIP
@@ -31,8 +31,8 @@ mariadb:
   auth:
     database: "bitnami_wordpress"
     username: "bn_wordpress"
-    password: "2evjC8!93h5ycQcuoApSYe@C"
-    rootPassword: "@k7wt5mkQm*5nn4S?X6Dfz3V"
+    password: "g4*Bd9mTupXrJFdULh@4LqZq"
+    rootPassword: "EvVA#XAM2x5XvBrQdJgGXgTm"
   primary:
     persistence:
       enabled: true
