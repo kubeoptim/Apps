@@ -1,15 +1,55 @@
+# wordpress/tolisso/values.yaml
 wordpressUsername: admin
-wordpressPassword: byvKsromNDeR8GEj
+wordpressPassword: "QL6uU5Y3zh3rYa%oZUy#4ut@"
+
+service:
+  type: ClusterIP
+
 ingress:
   enabled: true
   hostname: "tolisso"
-  tls: true
-storage:
-  class: longhorn
-  size: 10Gi
-extraEnvVars:
-  - name: REQUESTER_EMAIL
-    value: "tolisso@test.com"
-  - name: REQUESTER_NAME
-    value: "tolisso tolisso"
+  ingressClassName: traefik
+  tls: false
+  annotations: {}
 
+replicaCount: 1
+resources:
+  requests: { cpu: 50m,  memory: 128Mi }
+  limits:   { cpu: 200m, memory: 256Mi }
+
+volumePermissions:
+  enabled: true
+
+persistence:
+  enabled: true
+  storageClass: longhorn-1r
+  size: 2Gi
+
+mariadb:
+  enabled: true
+  architecture: standalone
+  auth:
+    database: "bitnami_wordpress"
+    username: "bn_wordpress"
+    password: "U!E#Js?M*U#SH4GXp7Zsc6X9"
+    rootPassword: "zmLSu*YzQ3aPd!!dELX5rK@g"
+  primary:
+    persistence:
+      enabled: true
+      storageClass: longhorn-1r
+      size: 2Gi
+    resources:
+      requests: { cpu: 50m,  memory: 128Mi }
+      limits:   { cpu: 200m, memory: 256Mi }
+  metrics:
+    enabled: false
+  volumePermissions:
+    enabled: true
+
+allowEmptyPassword: false
+extraEnvVars:
+  - name: ALLOW_EMPTY_PASSWORD
+    value: "no"
+
+metrics:
+  enabled: false
