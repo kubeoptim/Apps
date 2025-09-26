@@ -1,13 +1,13 @@
 # wordpress/tolisso/values.yaml
 wordpressUsername: admin
-wordpressPassword: "BxvYQ3bZowmwn!sL@bBgVgE3"
+wordpressPassword: "aS5LuYDQj*Aq%ZBrnQLV78pt"
 
 service:
   type: ClusterIP
 
 ingress:
   enabled: true
-  hostname: "tolisso.local"
+  hostname: "tolisso"
   ingressClassName: traefik
   tls: false
   annotations: {}
@@ -31,8 +31,8 @@ mariadb:
   auth:
     database: "bitnami_wordpress"
     username: "bn_wordpress"
-    password: "gvyYJbwutKoE!RQBoqYvh8oU"
-    rootPassword: "96fa?4K#GNDauTF6*nj345e@"
+    password: "EJg4VBymxCGfzkMfR2dXQsUi"
+    rootPassword: "YCMuxJE?beAPTpz4!67udsFL"
   primary:
     persistence:
       enabled: true
