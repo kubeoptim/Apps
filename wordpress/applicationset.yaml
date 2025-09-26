@@ -9,7 +9,7 @@ spec:
         repoURL: https://github.com/kubeoptim/Apps.git
         revision: main
         directories:
-          - path: Apps/wordpress/*          # <- un dossier = un client
+          - path: wordpress/*          # <- un dossier = un client
   template:
     metadata:
       name: 'wp-{{path.basename}}'          # ex: wp-bremens-test
@@ -28,7 +28,7 @@ spec:
           targetRevision: 19.2.0
           helm:
             valueFiles:
-              - $values/Apps/wordpress/{{path.basename}}/values.yaml  # <- valeurs du client
+              - $values/wordpress/{{path.basename}}/values.yaml  # <- valeurs du client
         # Source 2 : ton repo (pour $values)
         - repoURL: https://github.com/<YOU>/<REPO>.git
           targetRevision: main
