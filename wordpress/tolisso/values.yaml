@@ -7,7 +7,7 @@ service:
 
 ingress:
   enabled: true
-  hostname: "tolisso"
+  hostname: "tolisso.local"
   ingressClassName: traefik
   tls: false
   annotations: {}
