@@ -1,5 +1,5 @@
 wordpressUsername: admin
-wordpressPassword: FeqBDSqpCwhiDz5u
+wordpressPassword: byvKsromNDeR8GEj
 ingress:
   enabled: true
   hostname: "tolisso"
