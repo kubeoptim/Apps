@@ -1,0 +1,15 @@
+wordpressUsername: admin
+wordpressPassword: FeqBDSqpCwhiDz5u
+ingress:
+  enabled: true
+  hostname: "tolisso"
+  tls: true
+storage:
+  class: longhorn
+  size: 10Gi
+extraEnvVars:
+  - name: REQUESTER_EMAIL
+    value: "tolisso@test.com"
+  - name: REQUESTER_NAME
+    value: "tolisso tolisso"
+
