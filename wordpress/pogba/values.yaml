@@ -1,0 +1,15 @@
+wordpressUsername: admin
+wordpressPassword: ztkJSr6zBmy036U0
+ingress:
+  enabled: true
+  hostname: "pogba.com"
+  tls: true
+storage:
+  class: longhorn
+  size: 10Gi
+extraEnvVars:
+  - name: REQUESTER_EMAIL
+    value: "test@gmail.com"
+  - name: REQUESTER_NAME
+    value: "paul pogba"
+
