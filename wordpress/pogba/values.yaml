@@ -1,5 +1,5 @@
 wordpressUsername: admin
-wordpressPassword: ReFJSlipHJ6PNPOv
+wordpressPassword: bgOiP8JKXwqfqPzF
 ingress:
   enabled: true
   hostname: "pogba.com"
