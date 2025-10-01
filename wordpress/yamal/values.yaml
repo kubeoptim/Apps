@@ -1,32 +1,38 @@
 # wordpress/yamal/values.yaml
 wordpressUsername: admin
-wordpressPassword: "2sT7UxyHVRb4aK6jd7HTpZ2K"
+wordpressPassword: "kaaTtg4FT?#4%#tQzH2Cf6#v"
+
 service:
   type: ClusterIP
+
 ingress:
   enabled: true
-  hostname: "yamal.com.local"
+  hostname: "yamal.com"
   ingressClassName: traefik
   tls: false
   annotations: {}
+
 replicaCount: 1
 resources:
   requests: { cpu: 50m,  memory: 128Mi }
   limits:   { cpu: 200m, memory: 256Mi }
+
 volumePermissions:
   enabled: true
+
 persistence:
   enabled: true
   storageClass: longhorn-1r
   size: 2Gi
+
 mariadb:
   enabled: true
   architecture: standalone
   auth:
     database: "bitnami_wordpress"
     username: "bn_wordpress"
-    password: "89N9T**dBc92uD5V#QwnTJt?"
-    rootPassword: "h2NssKq*dGqcpFZKkqaqrPWB"
+    password: "TomjMVzp92#PfQZzYwg*#ZWS"
+    rootPassword: "m@2gys%gZgCcR3dG4jZYuHn7"
   primary:
     persistence:
       enabled: true
@@ -39,9 +45,11 @@ mariadb:
     enabled: false
   volumePermissions:
     enabled: true
+
 allowEmptyPassword: false
 extraEnvVars:
   - name: ALLOW_EMPTY_PASSWORD
     value: "no"
+
 metrics:
   enabled: false
