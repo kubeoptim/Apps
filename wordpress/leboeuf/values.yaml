@@ -18,13 +18,14 @@ resources:
   requests: { cpu: 50m,  memory: 128Mi }
   limits:   { cpu: 200m, memory: 256Mi }
 
-# WordPress -> init volumePermissions (os-shell)
+# WordPress -> init volumePermissions (os-shell) pin sur digest
 volumePermissions:
   enabled: true
   image:
-    registry: docker.io
+    registry: public.ecr.aws
     repository: bitnami/os-shell
-    tag: "12-debian-12"
+    digest: "sha256:61080b8427911b6281815a4e03a36e056e3cccc49de211ad489547c4bdad651e"
+    tag: ""   # vide pour éviter d'ajouter un tag
 
 persistence:
   enabled: true
@@ -56,13 +57,14 @@ mariadb:
   metrics:
     enabled: false
 
-  # MariaDB (sous-chart) -> init volumePermissions (os-shell)
+  # MariaDB -> init volumePermissions (os-shell) pin sur digest
   volumePermissions:
     enabled: true
     image:
-      registry: docker.io
+      registry: public.ecr.aws
       repository: bitnami/os-shell
-      tag: "12-debian-12"
+      digest: "sha256:61080b8427911b6281815a4e03a36e056e3cccc49de211ad489547c4bdad651e"
+      tag: ""   # vide pour éviter d'ajouter un tag
 
   allowEmptyPassword: false
   extraEnvVars:
