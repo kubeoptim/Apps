@@ -25,7 +25,7 @@ volumePermissions:
     registry: public.ecr.aws
     repository: bitnami/os-shell
     digest: "sha256:61080b8427911b6281815a4e03a36e056e3cccc49de211ad489547c4bdad651e"
-    tag: ""   # vide pour éviter d'ajouter un tag
+    tag: ""
 
 persistence:
   enabled: true
@@ -38,6 +38,16 @@ metrics:
 mariadb:
   enabled: true
   architecture: standalone
+
+  # ⬇️⬇️  AJOUT IMPORTANT : image du conteneur MariaDB principal
+  image:
+    registry: public.ecr.aws
+    repository: bitnami/mariadb
+    # Option A (recommandée) — pinner par digest (immuable) :
+    digest: "sha256:VOTRE_DIGEST_MARIADB"
+    tag: ""        # laissez vide si vous utilisez 'digest'
+    # Option B (si vous ne voulez pas de digest) :
+    # tag: "11.4.2-debian-12-rXX"
 
   auth:
     database: "bitnami_wordpress"
@@ -64,7 +74,7 @@ mariadb:
       registry: public.ecr.aws
       repository: bitnami/os-shell
       digest: "sha256:61080b8427911b6281815a4e03a36e056e3cccc49de211ad489547c4bdad651e"
-      tag: ""   # vide pour éviter d'ajouter un tag
+      tag: ""
 
   allowEmptyPassword: false
   extraEnvVars:
