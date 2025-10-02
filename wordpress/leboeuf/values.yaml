@@ -45,3 +45,20 @@ extraEnvVars:
     value: "no"
 metrics:
   enabled: false
+  # WordPress -> init volumePermissions (os-shell)
+volumePermissions:
+  enabled: true
+  image:
+    registry: docker.io
+    repository: bitnami/os-shell
+    tag: "12-debian-12"
+
+# MariaDB (sous-chart) -> init volumePermissions (os-shell)
+mariadb:
+  volumePermissions:
+    enabled: true
+    image:
+      registry: docker.io
+      repository: bitnami/os-shell
+      tag: "12-debian-12"
+
