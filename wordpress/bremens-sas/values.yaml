@@ -1,6 +1,6 @@
 # wordpress/bremens-sas/values.yaml
 wordpressUsername: admin
-wordpressPassword: "cC9kNZj9mG@y!2EjEXdBVVzS"
+wordpressPassword: "Q@PqHQKiF@VEb6dvpL*%Ap5v"
 service:
   type: ClusterIP
 ingress:
@@ -25,8 +25,8 @@ mariadb:
   auth:
     database: "bitnami_wordpress"
     username: "bn_wordpress"
-    password: "j@*M#x!v6CKdAr*zErm#rY!!"
-    rootPassword: "Zti#aD!kAKms2tS4HoS7jJqg"
+    password: "SNm*sEcPcje@wNQSSqLQV?6P"
+    rootPassword: "ChjQLFcKhtK?tpUszVvJ@@nS"
   primary:
     persistence:
       enabled: true
