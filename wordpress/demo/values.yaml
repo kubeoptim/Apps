@@ -1,6 +1,6 @@
 # wordpress/demo/values.yaml
 wordpressUsername: admin
-wordpressPassword: "Y%Z3saGUt5BR*WRN?i7GX5mk"
+wordpressPassword: "6L9HP!FY4wt7QGWbLMsenw5j"
 
 service:
   type: ClusterIP
@@ -31,8 +31,8 @@ mariadb:
   auth:
     database: "bitnami_wordpress"
     username: "bn_wordpress"
-    password: "F7?4iNk%dA96#5MtNKr6zE@D"
-    rootPassword: "FsNrvz*3VjM4qiUprt83PVuS"
+    password: "98ePs73ffGa5xByeQn7DECK8"
+    rootPassword: "jfcc4nqh?a3aJYyveJUADDA9"
   primary:
     persistence:
       enabled: true
