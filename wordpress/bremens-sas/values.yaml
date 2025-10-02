@@ -1,0 +1,47 @@
+# wordpress/bremens-sas/values.yaml
+wordpressUsername: admin
+wordpressPassword: "vfhnLHT8AHnYfYHo7UZUv*bJ"
+service:
+  type: ClusterIP
+ingress:
+  enabled: true
+  hostname: "bremens.com.local"
+  ingressClassName: traefik
+  tls: false
+  annotations: {}
+replicaCount: 1
+resources:
+  requests: { cpu: 50m,  memory: 128Mi }
+  limits:   { cpu: 200m, memory: 256Mi }
+volumePermissions:
+  enabled: true
+persistence:
+  enabled: true
+  storageClass: longhorn-1r
+  size: 2Gi
+mariadb:
+  enabled: true
+  architecture: standalone
+  auth:
+    database: "bitnami_wordpress"
+    username: "bn_wordpress"
+    password: "Lj66z73gU!F4V7%%cYJjXkXv"
+    rootPassword: "cu#YEqurQkk@vraZHHcAPm*T"
+  primary:
+    persistence:
+      enabled: true
+      storageClass: longhorn-1r
+      size: 2Gi
+    resources:
+      requests: { cpu: 50m,  memory: 128Mi }
+      limits:   { cpu: 200m, memory: 256Mi }
+  metrics:
+    enabled: false
+  volumePermissions:
+    enabled: true
+allowEmptyPassword: false
+extraEnvVars:
+  - name: ALLOW_EMPTY_PASSWORD
+    value: "no"
+metrics:
+  enabled: false
