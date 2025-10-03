@@ -1,0 +1,83 @@
+# wordpress/vincent-sas/values.yaml
+wordpressUsername: admin
+wordpressPassword: "DGKV4DV7NE@2Qg%%DVJBjAB7"
+wordpressEmail: admin@vincent.com
+wordpressFirstName: Admin
+wordpressLastName: User
+wordpressBlogName: "Vincent SAS"
+
+# Image officielle WordPress (toujours disponible)
+image:
+  registry: docker.io
+  repository: wordpress
+  tag: "6-apache"
+  pullPolicy: IfNotPresent
+  digest: ""
+
+service:
+  type: ClusterIP
+  
+ingress:
+  enabled: true
+  hostname: "vincent.com"
+  ingressClassName: traefik
+  tls: false
+  annotations: {}
+  
+replicaCount: 1
+
+resources:
+  requests: 
+    cpu: 100m
+    memory: 256Mi
+  limits:
+    cpu: 500m
+    memory: 512Mi
+
+# Désactiver volumePermissions pour éviter les problèmes d'images
+volumePermissions:
+  enabled: false
+  
+persistence:
+  enabled: true
+  storageClass: longhorn-1r
+  size: 5Gi
+  accessModes:
+    - ReadWriteOnce
+
+# Configuration MariaDB
+mariadb:
+  enabled: true
+  architecture: standalone
+  auth:
+    database: "bitnami_wordpress"
+    username: "bn_wordpress"
+    password: "gTRTjNgQ2i@mr5nNqM?NqQD2"
+    rootPassword: "BfhzL@PD6q!EjaafQxu3Jdm%"
+  primary:
+    persistence:
+      enabled: true
+      storageClass: longhorn-1r
+      size: 5Gi
+    resources:
+      requests:
+        cpu: 100m
+        memory: 256Mi
+      limits:
+        cpu: 500m
+        memory: 512Mi
+  volumePermissions:
+    enabled: false
+
+# Sécurité
+allowEmptyPassword: false
+podSecurityContext:
+  enabled: true
+  fsGroup: 33
+containerSecurityContext:
+  enabled: true
+  runAsUser: 33
+  runAsNonRoot: true
+
+metrics:
+  enabled: false
